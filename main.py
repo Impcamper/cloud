@@ -3,7 +3,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Use a service account.
-cred = credentials.Certificate('C:\\Users\\impca\\Documents\\fall projects\\key.json') #REMOVE BEFORE END
+cred = credentials.Certificate('C:\\Users\\impca\\Documents\\fall projects\\key.json')
 
 app = firebase_admin.initialize_app(cred)
 
@@ -33,7 +33,7 @@ while(menue!=0):
         break
     elif(menue==1):#entering a day into the list
         date=input("enter the day mm/dd/yyyy\n")
-        ref.collection("checklist").document("Daily").set({date:"done"})
+        ref.collection("checklist").document("Daily").set({date:"done"}, merge=True)
         print("-----")
     elif(menue==2):#print the list
         for doc in ref.collection("checklist").stream():
